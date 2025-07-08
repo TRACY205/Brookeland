@@ -39,6 +39,12 @@ body {
     padding-left: 20px;     /* optional: add space from the very left edge */
 }
 
+/* Hamburger icon default hidden on desktop, aligned right */
+.hamburger {
+  display: none; /* hidden on desktop */
+  font-size: 26px;
+  cursor: pointer;
+}
 
 
 
@@ -333,69 +339,85 @@ html, body {
 
 
 @media (max-width: 600px) {
-  /* Header */
+  /* Keep header horizontal */
   .main-header {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    flex-wrap: wrap;
+    padding: 15px 20px;
+  }
+
+  .logo-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
   }
 
   .logo,
   .logo-white {
-    width: 140px;
+    width: 100px;
     height: auto;
-    margin-bottom: 10px;
+    margin: 0;
   }
 
-  .nav-links {
-    flex-direction: row;          /* Keep horizontal */
-    flex-wrap: wrap;              /* Allow wrap on small screens */
-    justify-content: center;
-    gap: 20px;
-    padding: 0;
-    margin-top: 10px;
-  }
+.nav-links {
+  display: flex;
+  flex-direction: row;     /* ✅ Horizontal layout */
+  flex-wrap: wrap;         /* ✅ Allow wrapping if screen is too narrow */
+  justify-content: center; /* ✅ Center-align */
+  align-items: center;
+  gap: 15px;               /* ✅ Adjust spacing as needed */
+  padding: 10px 0;
+  margin-top: 10px;
+}
+
 
   .nav-links a {
-    font-size: 1em;
-    padding: 8px 16px;
-    letter-spacing: 1px;
-    text-align: center;
-  }
-
-  /* Top image */
-  .top-image img {
-    height: 40vh;
-    object-fit: cover;
-  }
-
-  .image-text {
-    position: absolute;
-    top: 30%;
-    left: 5%;
-    opacity: 1;
-    transform: none;
     font-size: 0.9em;
-    width: 90%;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 6px 12px;
   }
 
-  .line-drink {
-    font-size: 2.5em;
-  }
+  .top-image {
+  position: relative; /* Ensure the container is the positioning context */
+}
 
-  .line-self {
-    font-size: 1.5em;
-  }
+.image-text {
+  position: absolute;
+  top: 40%; /* ⬅️ Moves text lower on mobile */
+  left: 5%;
+  width: 90%;
+  font-size: 0.9em;
+  opacity: 1;
+  z-index: 5;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  transform: none;
+}
 
-  .tagline {
-    font-size: 1.1em;
-    padding: 10px;
-  }
 
-  .tagline2 {
-    font-size: 1.4em;
-  }
+.line-quality {
+  font-size: 1.2em;
+}
+
+.line-drink {
+  font-size: 2.2em;
+}
+
+.line-self {
+  font-size: 1.3em;
+}
+
+.tagline {
+  font-size: 1.1em;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.tagline2 {
+  font-size: 1.4em;
+}
+
 
   /* Gas box button */
   .gas-box {
@@ -406,7 +428,7 @@ html, body {
     display: inline-block;
   }
 
-  /* Product images in pairs */
+  /* Product images – left unchanged (they are working) */
   .all-images {
     flex-wrap: wrap;
     gap: 20px;
@@ -414,7 +436,7 @@ html, body {
   }
 
   .image-container {
-    width: 45%; /* Two per row */
+    width: 45%;
     margin-bottom: 20px;
   }
 
@@ -452,5 +474,40 @@ html, body {
     width: 100%;
     max-width: 90%;
     margin: 20px 0;
+  }
+}
+@media (max-width: 600px) {
+  /* Hamburger stays in same position */
+  .hamburger {
+    top: 20px;
+    right: 20px;
+  }
+
+  /* Hide nav links initially */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #ffffff;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    width: 80%;
+    max-width: 250px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 998;
+  }
+
+  /* Show nav when hamburger is clicked */
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 10px;
+    color: #111;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
   }
 }
