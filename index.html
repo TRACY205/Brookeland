@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brookelands - Home</title>
   <link rel="stylesheet" href="style.css">
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
 
   <!-- Header section -->
@@ -16,13 +17,33 @@
       <img src="brookeland white.png" alt="brookeland white" class="logo">
       <img src="brookgas white.png" alt="brookgas" class="logo-white">
     </div>
-    <nav class="nav-links">
+
+    <!-- Hamburger (mobile only) -->
+    <div class="hamburger" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- Shared Nav -->
+    <nav class="nav-links" id="navMenu">
       <a href="#">HOME</a>
       <a href="About.html">ABOUT</a>
       <a href="products.html">OUR PRODUCTS</a>
       <a href="contact.html">CONTACT</a>
     </nav>
   </header>
+
+  <!-- JS Toggle -->
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("navMenu");
+      if (window.innerWidth <= 600) {
+        nav.classList.toggle("show");
+      }
+    }
+  </script>
+
+</body>
+
 
   <!-- Image section below the hero -->
   <div class="top-image">
@@ -37,7 +58,9 @@
     <p class="line-drink">Drink</p>
     <p class="line-self">to your Best Self.</p>
     <p class="tagline">With Brookelands, you don’t just hydrate—you rise,<br> you refresh, you refocus.</p>
-  </div>
+  </div> 
+
+
 
   <!-- Product images -->
    <div class="all-images">
@@ -127,6 +150,10 @@
 
 </body>
 </html>
+
+
+
+
 
 
 
